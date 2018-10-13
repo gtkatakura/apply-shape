@@ -1,6 +1,23 @@
 {
   "name": "apply-shape",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "jest": "^23.6.0",
+    "regenerator-runtime": "^0.12.1"
+  },
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "babel --delete-dir-on-start --env-name esm -d esm src",
+    "build:cjs": "babel --delete-dir-on-start -d lib src",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  }
 }
